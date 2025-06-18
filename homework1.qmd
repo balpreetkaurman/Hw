@@ -50,6 +50,10 @@ ggplot(data_2007, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   theme_minimal()
 ```
 
+::: {.text-info}
+The below chart shows that Africa has the lowest average life expectancy, while Europe and Oceania have the highest. Asia and the Americas lie in between. This highlights regional differences likely linked to healthcare and economic development.
+:::
+
 ```{r}
 # Calculating mean life expectancy by continent
 avg_lifeExp <- data_2007 %>%

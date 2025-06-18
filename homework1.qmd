@@ -29,15 +29,15 @@ Each point represents a country. The plot reveals a positive correlation — cou
 
 
 ```{r, warning=FALSE, message=FALSE}
-# Loading required libraries
+#Loading required libraries
 library(ggplot2)
 library(gapminder)
 library(dplyr)
 
-# Filtering for 2007 data
+#Filtering the data for 2007
 data_2007 <- gapminder %>% filter(year == 2007)
 
-# Creating scatter plot
+#Creating the scatter plot
 ggplot(data_2007, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   geom_point(size = 2, alpha = 0.7) +
   scale_x_log10() + 

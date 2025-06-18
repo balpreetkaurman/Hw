@@ -50,6 +50,23 @@ ggplot(data_2007, aes(x = gdpPercap, y = lifeExp, color = continent)) +
   theme_minimal()
 ```
 
+```{r}
+# Calculating mean life expectancy by continent
+avg_lifeExp <- data_2007 %>%
+  group_by(continent) %>%
+  summarise(mean_lifeExp = mean(lifeExp))
+
+# Creating the bar plot
+ggplot(avg_lifeExp, aes(x = continent, y = mean_lifeExp, fill = continent)) +
+  geom_col(width = 0.6) +
+  labs(
+    title = "Average Life Expectancy by Continent (2007)",
+    x = "Continent",
+    y = "Average Life Expectancy (years)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
 
 ## Conclusion
 

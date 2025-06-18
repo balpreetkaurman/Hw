@@ -1,0 +1,56 @@
+---
+title: "GDP and Life Expectancy Across Continents"
+author: "Balpreet Kaur Saluja (24202918)"
+date: today
+format: pdf
+execute:
+  echo: false
+---
+
+## Introduction
+
+The **gapminder** dataset, available in the `gapminder` R package, contains historical data on GDP per capita, life expectancy, and population for countries around the world. This document explores the relationship between GDP per capita and life expectancy in *2007*, faceted by continent.
+
+## Descriptive Statistics
+
+Below is a brief summary of the main variables used in the plot:
+
+- *GDP per capita*: Measures the economic output per person.
+- *Life expectancy*: Average number of years a person is expected to live.
+- The data is from the year **2007**, the most recent available year in the dataset.
+
+## GDP vs Life Expectancy
+
+We use a scatter plot to visualize the relationship between **GDP per capita** and **life expectancy**, colored by continent.
+
+::: {.text-info}
+Each point represents a country. The plot reveals a positive correlation — countries with higher GDP per capita generally have higher life expectancy.
+:::
+
+
+```{r, warning=FALSE, message=FALSE}
+# Loading required libraries
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+
+# Filtering for 2007 data
+data_2007 <- gapminder %>% filter(year == 2007)
+
+# Creating scatter plot
+ggplot(data_2007, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point(size = 2, alpha = 0.7) +
+  scale_x_log10() + 
+  labs(
+    title = "GDP per Capita vs Life Expectancy (2007)",
+    x = "GDP per Capita (log scale)",
+    y = "Life Expectancy (years)",
+    color = "Continent"
+  ) +
+  theme_minimal()
+```
+
+
+## Conclusion
+
+This visual shows how socioeconomic factors such as GDP per capita are often linked to public health indicators like life expectancy. Africa tends to cluster lower on both metrics, while Europe shows high values in both.
